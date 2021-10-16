@@ -1,0 +1,12 @@
+body {
+    background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(69,86,102,1) 0%, rgba(34,34,34,1) 90% );
+
+}
+
+.elementos {
+    width: 400px;
+    padding: 24px;
+    margin: 10.5% 0 10% 0;
+    background-color: #FFF;
+    border-radius: 8px;
+}
