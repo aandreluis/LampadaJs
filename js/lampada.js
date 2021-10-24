@@ -1,6 +1,5 @@
 // criação das variaveis constantes, pegando os elementos do documento HTML pelo 'nome do id'
-const turnOn = document.getElementById ('turnOn');
-const turnOff = document.getElementById ('turnOff');
+const turnOnOff = document.getElementById ('turnOnOff');
 const lamp = document.getElementById ('lamp');
 
 //verificar se a lâmpada está quebrada
@@ -27,6 +26,9 @@ function lampOff () {
     //verificar se está quebrada
     if (!isLampDroken ()) { //se ñao tiver quebrada [! - negação]
         lamp.src = './img/desligada.jpg' //troca a refenceria da imagem
+        //sempre que desligar volta para o botão ligar, mesmo que passe o mouse encima
+        turnOnOff.textContent = 'Ligar';//muda o texto da tag para 'ligar'
+        turnOnOff.className = 'btn btn-warning';//muda os nomes da classe
     }
 }
 
@@ -35,9 +37,21 @@ function lampBroken () {
     lamp.src = './img/quebrada.jpg' //troca a refenceria da imagem
 }
 
+//função para ligar e desligar com um só botão
+function lampOnOff () {
+    if (turnOnOff.textContent == ('Ligar')) {//compara de o texto da tag é igual a 'ligar'
+        lampOn();//chama a função
+        turnOnOff.textContent = 'Desligar'; //muda o texto da tag para 'desligar'
+        turnOnOff.className = 'btn btn-dark';//muda os nomes da classe
+    } else {//se o texto da tag não ser igual a 'ligar'
+        lampOff();//chama a função
+        turnOnOff.textContent = 'Ligar';//muda o texto da tag para 'ligar'
+        turnOnOff.className = 'btn btn-warning';//muda os nomes da classe
+    }
+}
+
 //quando acontecer o evento 'nomeDoEventoJS', vai executar a função --> nomeDafunção.
-turnOn.addEventListener ('click', lampOn); //quando clicar execute a função lampOn
-turnOff.addEventListener ('click', lampOff); //quando clicar execute a função lampOff
+turnOnOff.addEventListener ('click', lampOnOff); //quando clicar execute a função lampOnOff
 lamp.addEventListener ('mouseover', lampOn); //quando o mouse passar por cima do elemento lampada, executa a função
 lamp.addEventListener ('mouseleave', lampOff); //quando o mouse sair de cima do elemento lampada, executa a função
 lamp.addEventListener ('dblclick', lampBroken); //quando clicar duas vezes executa a função
